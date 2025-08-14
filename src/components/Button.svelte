@@ -10,7 +10,11 @@
 {#if isLoading}
   <div class="w-full flex items-center justify-center"><Spinner /></div>
 {:else}
-  <button on:click={onButtonClick} class="button" data-test={dataTest}>
+  <button
+    on:click={onButtonClick}
+    class="button md:text-lg text-xs"
+    data-test={dataTest}
+  >
     <h4>{name}</h4>
   </button>
 {/if}

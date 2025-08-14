@@ -84,7 +84,7 @@
 </script>
 
 <div>
-  <div style="padding-right: 20px;">
+  <div>
     <button
       on:click={handleLogout}
       style="background: none; border: none; color: inherit; cursor: pointer; width: 100%;"
@@ -93,7 +93,7 @@
       <h3 class="text-right" style="cursor: pointer;">Logout</h3>
     </button>
     <div class="flex flex-col items-center">
-      <div class="max-w-[720px] mx-[60px]">
+      <div class="max-w-[720px]">
         <h2 class="text-center my-[40px] font-semibold text-3xl">
           Welcome back {currentUser?.name}
         </h2>
