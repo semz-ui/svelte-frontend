@@ -16,7 +16,7 @@ Includes **end-to-end testing** with Cypress, error handling, loading states, an
 - ✅ Key press functionality (e.g., press Enter to add a todo)
 - ✅ Loading states for better UX
 - ✅ End-to-End testing with Cypress
-- ✅ Live Deployment: [View Demo](https://your-live-demo-link.com)
+- ✅ Live Deployment: [View Demo](https://svelte-frontend-dusky.vercel.app)
 
 ---
 
