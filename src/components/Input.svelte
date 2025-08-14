@@ -79,19 +79,18 @@
     border-radius: 5px;
     background: #202142;
     border-style: solid;
-    padding: 20px;
+    padding: 20px 5px;
     display: flex;
     align-items: center;
     height: 40px;
   }
   .input {
     max-width: 400px;
-    min-width: 250px;
+    min-width: 200px;
     border: none;
     outline: none;
     background: #202142;
     color: white;
-    margin-left: 4;
   }
   input:focus {
     outline: none; /* Removes the outline */
