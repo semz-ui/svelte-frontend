@@ -13,7 +13,7 @@ Includes **end-to-end testing** with Cypress, error handling, loading states, an
 - ✅ Backend API with Express.js
 - ✅ TailwindCSS for responsive UI styling
 - ✅ Error handling for empty inputs and failed API requests
-- ✅ ✅ Key press functionality (e.g., press Enter to add a todo)
+- ✅ Key press functionality (e.g., press Enter to add a todo)
 - ✅ Loading states for better UX
 - ✅ End-to-End testing with Cypress
 - ✅ Live Deployment: [View Demo](https://your-live-demo-link.com)
