@@ -61,7 +61,7 @@ npm run dev
 ### 🧪 Running Cypress Tests
 
 ```bash
-npm run test:e2e
+npm run test:e2e:open
 ```
 
 ### 📂 Project Structure
