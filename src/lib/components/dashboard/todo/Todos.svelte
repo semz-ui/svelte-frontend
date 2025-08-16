@@ -2,9 +2,8 @@
   import type { TodoItemFromBackend } from "$lib/types/todo";
   import Todo from "./Todo.svelte";
 
-  export let todos: TodoItemFromBackend[];
-
-  console.log(JSON.stringify(todos), "todos");
+  const props = $props<{ todos: TodoItemFromBackend[] }>();
+  const { todos } = props;
 </script>
 
 <div>

@@ -1,17 +1,24 @@
 <script lang="ts">
   import Spinner from "./Spinner.svelte";
 
-  export let name: string;
-  export let dataTest: string = "";
-  export let isLoading: boolean = false;
-  export let onButtonClick: () => void;
+  let {
+    name,
+    dataTest,
+    isLoading = false,
+    onButtonClick,
+  }: {
+    name: string;
+    dataTest: string;
+    isLoading: boolean;
+    onButtonClick?: () => void;
+  } = $props();
 </script>
 
 {#if isLoading}
   <div class="w-full flex items-center justify-center"><Spinner /></div>
 {:else}
   <button
-    on:click={onButtonClick}
+    onclick={onButtonClick}
     class="button md:text-lg text-xs"
     data-test={dataTest}
   >

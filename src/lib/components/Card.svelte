@@ -6,7 +6,6 @@
 
   const props = $props<{ todo: TodoItemFromBackend }>();
   const { todo } = props;
-  let selectedTodo = $state<TodoItemFromBackend | null>(null);
 
   const handleSelectedTodo = () => {
     if (todoState.selectTodo && todoState.selectTodo._id === todo._id) {

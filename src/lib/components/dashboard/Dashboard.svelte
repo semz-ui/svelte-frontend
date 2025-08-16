@@ -11,9 +11,7 @@
   import Title from "../Title.svelte";
   import { getAppState, getTodoState } from "$lib/state";
 
-  let currentUser = $state<User | null>(null); // current user logged in
-  let text = $state<string>(""); // input value stored
-  let selectedTodo = $state<TodoItemFromBackend | null>(null);
+  let text = $state<string>("");
   let fetchLoading = $state<boolean>(false);
   let createLoading = $state<boolean>(false);
   let updateLoading = $state<boolean>(false);
@@ -30,14 +28,14 @@
     }
   });
 
-  currentUser = appState.user;
+  let currentUser: User | null = $derived(appState.user);
+  let todos: TodoItemFromBackend[] = $derived(todoState.todos);
 
   onMount(async () => {
     fetchLoading = true;
     await todoState.fetchTodos(currentUser?.email ?? "");
     fetchLoading = false;
   });
-
   $effect(() => {
     if (currentUser === null) {
       goto("/");
@@ -59,9 +57,9 @@
       });
       return;
     }
-    if (selectedTodo) {
+    if (todoState.selectTodo) {
       updateLoading = true;
-      await todoState.updateTodo(selectedTodo?._id, text);
+      await todoState.updateTodo(todoState.selectTodo?._id, text);
       todoState.setSelectedTodo(null);
       text = "";
       updateLoading = false;
@@ -72,6 +70,10 @@
       createLoading = false;
     }
   };
+
+  $effect(() => {
+    console.log(todoState, "op");
+  });
 
   const handleLogout = async () => {
     appState.logout();
@@ -89,7 +91,12 @@
       <!-- <h3 class="text-right" style="cursor: pointer;">Logout</h3> -->
     </button>
     <div class="flex justify-end mr-[10px]">
-      <Button name={"Logout"} onButtonClick={handleLogout} />
+      <Button
+        dataTest="logout-button"
+        isLoading={false}
+        name={"Logout"}
+        onButtonClick={handleLogout}
+      />
     </div>
     <div class="flex flex-col items-center">
       <div class="max-w-[720px]">
@@ -107,13 +114,13 @@
                 onKeyPress={handleKeyDown}
               />
               <Button
-                name={selectedTodo ? "Edit Todo" : "Add Todo"}
+                name={todoState.selectTodo ? "Edit Todo" : "Add Todo"}
                 onButtonClick={handleCreatePost}
                 isLoading={updateLoading || createLoading}
                 dataTest="todo-button"
               />
             </div>
-            <Todos todos={todoState.todos} />
+            <Todos {todos} />
           </div>
         {/if}
       </div>

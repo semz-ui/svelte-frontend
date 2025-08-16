@@ -1,8 +1,10 @@
 <script lang="ts">
-  //  let { handlePageTypeChange } = $props();
-  export let handlePageTypeChange: () => void;
-  export let text;
-  export let dataTest: string = "";
+  let {
+    text,
+    dataTest,
+    handlePageTypeChange,
+  }: { handlePageTypeChange: () => void; text: string; dataTest?: string } =
+    $props();
 </script>
 
 <p

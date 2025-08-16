@@ -20,19 +20,19 @@ class TodoState {
         return this.appState.token
     }
 
-    get todos(): TodoItemFromBackend[] | [] {
+    get todos() {
         return this.#todos
     }
 
-    get loading(): boolean {
+    get loading() {
         return this.#loading;
     }
 
-    get error(): string | null {
+    get error() {
         return this.#error
     }
 
-    get success(): string | null {
+    get success() {
         return this.#success;
     }
 
@@ -41,7 +41,7 @@ class TodoState {
     }
 
     get selectTodo(): TodoItemFromBackend | null {
-        return this.#selectTodo
+        return this.#selectTodo;
     }
 
     set selectTodo(todo: TodoItemFromBackend) {
@@ -63,7 +63,6 @@ class TodoState {
             const data = await res.json();
 
             this.#todos = data
-            console.log(this.#todos)
         } catch (error: any) {
             console.error('Error fetching todos:', error);
             this.#error = error instanceof Error ? error.message : 'Unknown error';
@@ -112,6 +111,7 @@ class TodoState {
 
             this.#success = updatedTodo.message
             this.#todos = this.#todos.map((todo) => todo._id === id ? updatedTodo.post : todo)
+            console.log(this.#todos, "this.#todos")
 
         } catch (error) {
             console.error('Error creating client:', error);

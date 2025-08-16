@@ -4,10 +4,12 @@
   import Card from "../../Card.svelte";
   import { getTodoState } from "$lib/state";
 
-  export let todo: TodoItemFromBackend;
+  const props = $props<{ todo: TodoItemFromBackend }>();
+  const { todo } = props;
+  let id = $state<string>("");
+  let deleteLoading = $state<boolean>(false);
+
   const todoState = getTodoState();
-  let id: string;
-  let deleteLoading: boolean = false;
 
   const handleDelete = async (e: Event) => {
     deleteLoading = true;
@@ -26,7 +28,7 @@
   {:else}
     <button
       class="close"
-      on:click={(e) => handleDelete(e)}
+      onclick={(e) => handleDelete(e)}
       data-test="delete-todo-button">X</button
     >
   {/if}

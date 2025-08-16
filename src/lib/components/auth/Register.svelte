@@ -51,14 +51,35 @@
 <form class="mt-[100px]" onsubmit={handleSubmit}>
   <Title title={`Register`} />
   <div class="flex flex-col gap-4 mt-[20px]">
-    <Input placeholder="Name" type="text" bind:value={name} />
-    <Input placeholder="Email" type="email" bind:value={email} />
-    <Input type="password" placeholder="Password" bind:value={password} />
     <Input
+      dataTest="register-name"
+      placeholder="Name"
+      type="text"
+      bind:value={name}
+    />
+    <Input
+      dataTest="register-email"
+      placeholder="Email"
+      type="email"
+      bind:value={email}
+    />
+    <Input
+      dataTest="register-password"
+      type="password"
+      placeholder="Password"
+      bind:value={password}
+    />
+    <Input
+      dataTest="register-confirm-password"
       type="password"
       placeholder="Confirm Password"
       bind:value={confirmPassword}
     />
-    <Button name="Submit" onButtonClick={() => {}} isLoading={loading} />
+    <Button
+      dataTest="register-button"
+      name="Submit"
+      onButtonClick={() => {}}
+      isLoading={loading}
+    />
   </div>
 </form>

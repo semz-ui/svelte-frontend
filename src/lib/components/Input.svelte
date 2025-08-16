@@ -1,10 +1,18 @@
 <script lang="ts">
-  export let type: string;
-  export let placeholder: string;
-  export let value: string;
-  export let dataTest: string = "";
-  export let onKeyPress: (e: KeyboardEvent) => void = () => {};
-  let sub_type: string;
+  let {
+    type,
+    placeholder,
+    dataTest = "",
+    onKeyPress = () => {},
+    value = $bindable<string>(""),
+  }: {
+    type: string;
+    placeholder: string;
+    value: string;
+    dataTest: string;
+    onKeyPress?: (e: KeyboardEvent) => void;
+  } = $props();
+  let sub_type = $state<string>("");
   sub_type = type;
   const handleTypeChange: () => void = () => {
     sub_type === "password" ? (sub_type = "text") : (sub_type = "password");
@@ -18,15 +26,15 @@
     bind:value
     class="input"
     data-test={dataTest}
-    on:keypress={onKeyPress}
-    on:change={(e) => {
+    onkeypress={onKeyPress}
+    onchange={(e) => {
       value = (e.target as HTMLInputElement).value;
     }}
   />
   {#if type === "password"}
     {#if sub_type === "password"}
       <button
-        on:click={handleTypeChange}
+        onclick={handleTypeChange}
         type="button"
         style="cursor: pointer; background: none; border: none; padding: 0;"
         aria-label="Toggle password visibility"
@@ -46,7 +54,7 @@
     {:else}
       <button
         type="button"
-        on:click={handleTypeChange}
+        onclick={handleTypeChange}
         style="cursor: pointer; background: none; border: none; padding: 0;"
         aria-label="Toggle password visibility"
       >
@@ -86,7 +94,7 @@
   }
   .input {
     max-width: 400px;
-    min-width: 200px;
+    min-width: 300px;
     border: none;
     outline: none;
     background: #202142;
