@@ -28,6 +28,8 @@
     }
   });
 
+  //fix
+
   let currentUser: User | null = $derived(appState.user);
   let todos: TodoItemFromBackend[] = $derived(todoState.todos);
 
