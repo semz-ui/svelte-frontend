@@ -3,6 +3,8 @@
   import Todo from "./Todo.svelte";
 
   export let todos: TodoItemFromBackend[];
+
+  console.log(JSON.stringify(todos), "todos");
 </script>
 
 <div>

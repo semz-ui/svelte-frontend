@@ -1,28 +1,26 @@
 <script lang="ts">
-  import Card from "../components/Card.svelte";
   import type { TodoItemFromBackend } from "$lib/types/todo";
-  import { todoStore } from "$lib/stores/todo";
-  import Spinner from "../components/Spinner.svelte";
+  import Spinner from "../../Spinner.svelte";
+  import Card from "../../Card.svelte";
+  import { getTodoState } from "$lib/state";
 
-  //   const dispatch = createEventDispatcher();
   export let todo: TodoItemFromBackend;
-  const { deleteTodo, selectTodo } = todoStore;
+  const todoState = getTodoState();
   let id: string;
   let deleteLoading: boolean = false;
 
   const handleDelete = async (e: Event) => {
     deleteLoading = true;
     e.stopPropagation();
-    selectTodo.set(null);
+    todoState.setSelectedTodo(null);
     id = todo._id;
-    await deleteTodo(todo._id);
+    await todoState.deleteTodo(todo._id);
     id = "";
     deleteLoading = false;
   };
 </script>
 
 <Card {todo}>
-  <!-- <div class="num-display">{todo.rating}</div> -->
   {#if deleteLoading && id === todo._id}
     <div class="flex justify-end"><Spinner /></div>
   {:else}
@@ -32,7 +30,9 @@
       data-test="delete-todo-button">X</button
     >
   {/if}
-  <p class="text-display" data-test="todo-item">{todo.text}</p>
+  <p class="text-display text-left" data-test="todo-item">
+    {todo.text}
+  </p>
 </Card>
 
 <style>
