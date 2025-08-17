@@ -46,7 +46,7 @@ describe('home page', () => {
     cy.wait(500)
 
     // delete todo
-    cy.get("[data-test=todo-items]")
+    cy.getDataTest("todo-items")
       .contains(addTodo + editText)
       .find("[data-test=delete-todo-button]")
       .click({ multiple: true });
