@@ -4,8 +4,7 @@
 
   const todoState = getTodoState();
 
-  const props = $props<{ todo: TodoItemFromBackend }>();
-  const { todo } = props;
+  const { todo }: { todo: TodoItemFromBackend } = $props();
 
   const handleSelectedTodo = () => {
     if (todoState.selectTodo && todoState.selectTodo._id === todo._id) {

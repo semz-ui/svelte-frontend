@@ -4,8 +4,7 @@
   import Card from "../../Card.svelte";
   import { getTodoState } from "$lib/state";
 
-  const props = $props<{ todo: TodoItemFromBackend }>();
-  const { todo } = props;
+  const { todo }: { todo: TodoItemFromBackend } = $props();
   let id = $state<string>("");
   let deleteLoading = $state<boolean>(false);
 

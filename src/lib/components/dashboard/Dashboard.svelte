@@ -85,13 +85,13 @@
 
 <div>
   <div>
-    <button
+    <!-- <button
       onclick={handleLogout}
       style="background: none; border: none; color: inherit; cursor: pointer; width: 100%;"
       data-test="logout-button"
     >
-      <!-- <h3 class="text-right" style="cursor: pointer;">Logout</h3> -->
-    </button>
+      <h3 class="text-right" style="cursor: pointer;">Logout</h3>
+    </button> -->
     <div class="flex justify-end mr-[10px]">
       <Button
         dataTest="logout-button"

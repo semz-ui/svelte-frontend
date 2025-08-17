@@ -47,7 +47,7 @@ describe('home page', () => {
     cy.wait(500)
 
     //logout user
-    cy.getDataTest("logout-button").eq(0).click();
+    cy.getDataTest("logout-button").click();
     cy.location("pathname").should("not.eq", "/dashboard")
     cy.location("pathname").should("eq", "/")
   })

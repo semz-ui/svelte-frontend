@@ -2,8 +2,7 @@
   import type { TodoItemFromBackend } from "$lib/types/todo";
   import Todo from "./Todo.svelte";
 
-  const props = $props<{ todos: TodoItemFromBackend[] }>();
-  const { todos } = props;
+  let { todos }: { todos: TodoItemFromBackend[] } = $props();
 </script>
 
 <div>
