@@ -35,21 +35,29 @@ describe('home page', () => {
 
     //update todo
     const editText = " (edit)"
-    cy.getDataTest("edit-todo").eq(0).click();
+    cy.contains("[data-test=todo-items]", addTodo) // find the todo item by text
+      .within(() => {
+        cy.get("[data-test=edit-todo]").click({ multiple: true })
+      });
+    // cy.getDataTest("edit-todo").eq(0).click();
     cy.getDataTest("todo-input").type(editText);
     cy.getDataTest("todo-button").click()
     cy.contains(editText).should("exist")
     cy.wait(500)
 
     // delete todo
-    cy.getDataTest("delete-todo-button").eq(0).click();
-    cy.contains(addTodo).should("not.exist")
+    cy.get("[data-test=todo-items]")
+      .contains(addTodo + editText)
+      .find("[data-test=delete-todo-button]")
+      .click({ multiple: true });
+
+    cy.contains(addTodo).should("not.exist");
     cy.wait(500)
 
     //logout user
     cy.getDataTest("logout-button").click();
     cy.location("pathname").should("not.eq", "/dashboard")
-    cy.location("pathname").should("eq", "/")
+    cy.location("pathname").should("eq", "/auth")
   })
 
 })

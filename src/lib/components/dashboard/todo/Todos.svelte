@@ -5,7 +5,7 @@
   let { todos }: { todos: TodoItemFromBackend[] } = $props();
 </script>
 
-<div>
+<div data-test="todo-items">
   {#if todos && todos.length > 0}
     {#each todos as todo (todo._id)}
       <Todo {todo} />
